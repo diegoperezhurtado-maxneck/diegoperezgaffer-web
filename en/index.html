@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Diego Pérez Hurtado — Gaffer</title>
+<meta name="description" content="Diego Pérez Hurtado, film & commercial gaffer, co-founder of WarmWhite and Aural Stage. Over 13 years of on-set lighting experience." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  @font-face{
+    font-family: "Futura Medium";
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+    src:
+      url("../fonts/FuturaStd-Medium.otf") format("opentype"),
+      url("../fonts/FuturaMedium.ttf") format("truetype");
+  }
+
+  :root{
+    --bg:#0b0a08;
+    --bg-soft: #0f0d0a;
+    --surface:#171310;
+    --surface-2:#1f1a15;
+    --ink:#f3ede2;
+    --ink-dim:#a89d8e;
+    --ink-faint:#6b6257;
+    --amber:#ff9a3c;
+    --amber-dim:#7a4a1e;
+    --line: rgba(243,237,226,0.14);
+    --line-soft: rgba(243,237,226,0.08);
+
+    --font-display: "Big Shoulders Display", "Oswald", "Arial Narrow", sans-serif;
+    --font-body: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+    --font-mono: "IBM Plex Mono", "Consolas", monospace;
+
+    color-scheme: dark;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  ::selection{ background: var(--amber); color: #1a1108; }
+
+  a{ color: inherit; text-decoration: none; }
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--amber);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 64px);
+  }
+
+  .prose{ max-width: 62ch; }
+
+  .eyebrow{
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+  }
+  .eyebrow.is-white{ color: var(--ink); }
+  .hero .eyebrow{ text-shadow: 0 2px 12px rgba(0,0,0,0.6); }
+  .eyebrow::before{
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: currentColor;
+    display: inline-block;
+  }
+
+  h1, h2, h3{
+    font-family: var(--font-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.96;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  /* film grain overlay */
+  .grain{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px clamp(20px, 5vw, 64px);
+    background: linear-gradient(to bottom, rgba(11,10,8,0.85) 40%, transparent);
+  }
+  .logo-group{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .logo{
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(0.82rem, 2.6vw, 1.3rem);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .logo span{ color: var(--amber); }
+  .imdb-badge{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5c518;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
+    font-size: 0.7rem;
+    letter-spacing: 0.01em;
+    padding: 3px 6px;
+    border-radius: 4px;
+    line-height: 1.4;
+    flex-shrink: 0;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .imdb-badge:hover{ transform: translateY(-1px); box-shadow: 0 4px 12px rgba(245,197,24,0.35); }
+
+  .nav-toggle{
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: border-color 0.2s ease;
+  }
+  .nav-toggle:hover{ border-color: var(--amber); }
+  .nav-toggle .bars{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .nav-toggle .bars i{
+    width: 14px; height: 1px;
+    background: var(--ink);
+    display: block;
+  }
+
+  .header-actions{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lang-switch{
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .lang-switch:hover{
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+
+  /* ---------- nav overlay ---------- */
+  .overlay{
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background: var(--bg-soft);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(20px, 5vw, 64px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s;
+  }
+  .overlay.is-open{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .overlay-close{
+    position: absolute;
+    top: 22px; right: clamp(20px, 5vw, 64px);
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    border-radius: 100px;
+    width: 42px; height: 42px;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .overlay-close:hover{ border-color: var(--amber); }
+  .overlay-list{
+    list-style: none;
+    margin: 0; padding: 0;
+  }
+  .overlay-list li{
+    border-top: 1px solid var(--line-soft);
+  }
+  .overlay-list li:last-child{ border-bottom: 1px solid var(--line-soft); }
+  .overlay-list a{
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding: 18px 4px;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 7vw, 4.2rem);
+    text-transform: uppercase;
+    font-weight: 800;
+    transition: color 0.15s ease, padding-left 0.15s ease;
+  }
+  .overlay-list a:hover{ color: var(--amber); padding-left: 14px; }
+  .overlay-list .ch{
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+  }
+  .overlay-foot{
+    margin-top: 40px;
+    display: flex;
+    gap: 28px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-dim);
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position: relative;
+    padding: clamp(120px, 22vh, 200px) 0 96px;
+    overflow: hidden;
+  }
+  .hero-video{
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hero-scrim{
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+      radial-gradient(ellipse 900px 700px at 18% 38%, rgba(11,10,8,0.82) 0%, rgba(11,10,8,0.5) 48%, rgba(11,10,8,0) 78%),
+      linear-gradient(180deg, rgba(11,10,8,0.72) 0%, rgba(11,10,8,0.6) 45%, rgba(11,10,8,0.9) 100%);
+  }
+
+  .hero-inner{ position: relative; z-index: 2; }
+  .hero h1{
+    font-size: clamp(3.2rem, 10vw, 8rem);
+    margin: 18px 0 28px;
+    text-shadow: 0 4px 28px rgba(0,0,0,0.55);
+  }
+  .hero h1 em{
+    font-style: normal;
+    color: var(--amber);
+  }
+  .hero-sub{
+    max-width: 46ch;
+    color: var(--ink-dim);
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    text-shadow: 0 2px 16px rgba(0,0,0,0.5);
+  }
+  .hero-cta{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 28px;
+    margin-top: 44px;
+  }
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--amber);
+    color: #1a1108;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 15px 26px;
+    border-radius: 100px;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .btn:hover{ background: #ffb066; transform: translateY(-1px); }
+  .link-ghost{
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-dim);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 3px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .link-ghost:hover{ color: var(--amber); border-color: var(--amber); }
+  button.link-ghost{
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 3px;
+    cursor: pointer;
+  }
+
+  /* ---------- section shells ---------- */
+  section{ position: relative; z-index: 1; }
+  .section-pad{ padding: 110px 0; }
+  .divider{
+    height: 1px;
+    background: var(--line-soft);
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  /* ---------- intro ---------- */
+  .intro-grid{
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(32px, 6vw, 90px);
+    align-items: center;
+  }
+  .photo-frame{
+    position: relative;
+    aspect-ratio: 1 / 1.05;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 32%, #3a2410, #0f0d0a 72%);
+    overflow: hidden;
+    box-shadow: inset 0 0 60px rgba(0,0,0,0.5);
+  }
+  .photo-frame img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .photo-placeholder{
+    position: absolute;
+    inset: 14px;
+    border-radius: 50%;
+    border: 1px dashed rgba(243,237,226,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .photo-placeholder span{
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    line-height: 1.6;
+  }
+  .intro-text h2{
+    font-size: clamp(2rem, 4.4vw, 3.4rem);
+    margin-bottom: 22px;
+  }
+  .intro-text strong{ color: var(--amber); }
+  .intro-text p{ color: var(--ink-dim); margin: 0 0 16px; }
+  .intro-text p:last-child{ margin-bottom: 0; }
+
+  /* ---------- work ---------- */
+  .work-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+  }
+  .work-head h2{ font-size: clamp(2.2rem, 5vw, 3.8rem); margin-top: 14px; }
+  .work-head p{ color: var(--ink-dim); max-width: 42ch; margin: 0; }
+
+  .work-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+    gap: 28px;
+  }
+  .card{
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover{ transform: translateY(-4px); border-color: var(--amber-dim); }
+
+  .card-art{
+    position: relative;
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+  }
+  .card-art:disabled{ cursor: pointer; }
+  .card-art video{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #000;
+  }
+  .card-art .tag{
+    position: absolute;
+    top: 14px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    padding: 4px 9px;
+    border-radius: 3px;
+    background: rgba(11,10,8,0.45);
+    backdrop-filter: blur(2px);
+  }
+  .card-art .tag.k{ left: 14px; color: #fff; }
+  .card-art .tag.n{ right: 14px; color: rgba(255,255,255,0.75); }
+  .card-art .play{
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .card:hover .play{ background: rgba(255,255,255,0.14); transform: scale(1.06); }
+  .card-art .play svg{ width: 16px; height: 16px; fill: #fff; margin-left: 2px; }
+
+  .card-body{ padding: 20px 22px 22px; }
+  .card-body h3{
+    font-size: 1.5rem;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .card-body .meta{
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.02em;
+    display: block;
+    margin-bottom: 14px;
+  }
+  .card-body .watch{
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--amber);
+    letter-spacing: 0.03em;
+  }
+
+  .work-foot{
+    margin-top: 44px;
+    color: var(--ink-faint);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+  }
+  .work-foot .dot{ color: var(--amber); }
+
+  /* ---------- filmography ---------- */
+  .filmo-subhead{
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 4px;
+  }
+  .filmo-subhead:not(:first-child){ margin-top: 40px; }
+  .filmo-list{
+    list-style: none;
+    margin: 0; padding: 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .filmo-row{
+    display: grid;
+    grid-template-columns: 64px 1fr auto auto;
+    align-items: baseline;
+    gap: 20px;
+    padding: 18px 4px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .filmo-year{
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+  }
+  .filmo-title{
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .filmo-title em{
+    font-style: normal;
+    color: var(--ink-faint);
+    font-weight: 400;
+    font-size: 0.85rem;
+  }
+  .filmo-role{
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .filmo-link{
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--amber);
+    white-space: nowrap;
+    justify-self: end;
+    transition: color 0.15s ease;
+  }
+  .filmo-link:hover{ color: #ffb066; }
+  .filmo-actions{
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    justify-self: end;
+  }
+  .filmo-trailer{
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--amber);
+    white-space: nowrap;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: color 0.15s ease;
+  }
+  .filmo-trailer:hover{ color: #ffb066; }
+  @media (max-width: 700px){
+    .filmo-row{
+      grid-template-columns: 1fr auto;
+      row-gap: 6px;
+      padding: 16px 4px;
+    }
+    .filmo-year{ order: -1; }
+    .filmo-role{ grid-column: 1 / 2; }
+    .filmo-link{ grid-column: 2 / 3; }
+  }
+
+  .filmo-toggle{
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 13px 24px;
+    margin-top: 36px;
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+  }
+  .filmo-toggle:hover{ border-color: var(--amber); }
+  .filmo-toggle-icon{
+    color: var(--amber);
+    font-size: 1rem;
+    line-height: 1;
+    transition: transform 0.2s ease;
+    display: inline-block;
+  }
+  .filmo-toggle[aria-expanded="true"] .filmo-toggle-icon{ transform: rotate(45deg); }
+
+  .filmo-full{ margin-top: 8px; }
+  .filmo-compact{
+    list-style: none;
+    margin: 28px 0 0;
+    padding: 0;
+    columns: 2;
+    column-gap: 48px;
+  }
+  .filmo-compact li{ break-inside: avoid; }
+  .filmo-compact a{
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    padding: 9px 6px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .filmo-compact a:hover .fc-title{ color: var(--amber); }
+  .fc-year{
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--ink-faint);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+    width: 44px;
+  }
+  .fc-title{
+    font-size: 0.88rem;
+    color: var(--ink);
+    transition: color 0.15s ease;
+  }
+  .fc-role{
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  @media (max-width: 700px){
+    .filmo-compact{ columns: 1; }
+    .fc-role{ margin-left: 54px; }
+  }
+
+  /* ---------- warmwhite ---------- */
+  .ww-panel{
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: clamp(28px, 5vw, 56px);
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
+  }
+  .ww-panel h2{
+    font-family: "Futura Medium", "Futura", "Century Gothic", "Trebuchet MS", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    font-size: clamp(2.1rem, 4.6vw, 3.4rem);
+    margin: 14px 0 20px;
+  }
+  .ww-panel h2 span{ color: inherit; }
+  .ww-panel p{ color: var(--ink-dim); margin: 0 0 14px; }
+  .ww-panel p:last-child{ margin-bottom: 0; }
+
+  .ww-brand{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .ww-logo{
+    width: 30px;
+    height: auto;
+    flex-shrink: 0;
+    fill: var(--ink);
+  }
+  .ww-cta{
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-top: 26px;
+  }
+  .ww-note{
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    color: var(--ink-faint);
+  }
+
+  .faders{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px;
+    height: 200px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+    padding: 18px 16px 12px;
+  }
+  .fader-col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+    flex: 1;
+    min-width: 0;
+  }
+  .fader-track{
+    position: relative;
+    width: 6px;
+    flex: 1;
+    background: rgba(243,237,226,0.08);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .fader-track i{
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, var(--ink), var(--amber));
+    border-radius: 3px;
+    animation: faderMove 7s ease-in-out infinite;
+  }
+  .fader-col:nth-child(1) .fader-track i{ animation-delay: 0s; }
+  .fader-col:nth-child(2) .fader-track i{ animation-delay: 0.6s; }
+  .fader-col:nth-child(3) .fader-track i{ animation-delay: 1.2s; }
+  .fader-col:nth-child(4) .fader-track i{ animation-delay: 1.8s; }
+  .fader-col:nth-child(5) .fader-track i{ animation-delay: 2.4s; }
+  .fader-col:nth-child(6) .fader-track i{ animation-delay: 3s; }
+  .fader-col:nth-child(7) .fader-track i{ animation-delay: 3.6s; }
+  .fader-col:nth-child(8) .fader-track i{ animation-delay: 4.2s; }
+  @keyframes faderMove{
+    0%, 100%{ height: 30%; }
+    50%{ height: 82%; }
+  }
+  .fader-col span{
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- stats ---------- */
+  .stats{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: left;
+  }
+  .stat b{
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 800;
+    color: var(--amber);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .stat span{
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.04em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    display: block;
+    margin-top: 10px;
+  }
+
+  /* ---------- contact ---------- */
+  .contact h2{
+    font-size: clamp(2.6rem, 8vw, 6rem);
+  }
+  .contact-row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  .contact-row p{ color: var(--ink-dim); max-width: 40ch; margin: 0; }
+  .mail{
+    font-family: var(--font-mono);
+    font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+    color: var(--ink);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 6px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+  }
+  .mail:hover{ color: var(--amber); border-color: var(--amber); }
+  .contact-note{
+    margin-top: 18px;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--ink-faint);
+  }
+
+  footer{
+    border-top: 1px solid var(--line-soft);
+    padding: 30px 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--ink-faint);
+  }
+
+  @media (max-width: 860px){
+    .intro-grid, .ww-panel{ grid-template-columns: 1fr; }
+    .photo-frame{ width: min(280px, 100%); margin: 0 auto; }
+    .stats{ grid-template-columns: 1fr; gap: 34px; }
+    .faders{ height: 160px; }
+  }
+
+  /* ---------- phones ---------- */
+  @media (max-width: 640px){
+    .section-pad{ padding: 72px 0; }
+    .hero{ padding: clamp(100px, 24vh, 160px) 0 64px; }
+    .work-head, .contact-row{ align-items: flex-start; }
+    .contact-row{ gap: 22px; }
+    .mail{ white-space: normal; word-break: break-word; font-size: 1rem; }
+    .filmo-row{ row-gap: 8px; }
+    .filmo-actions{ flex-wrap: wrap; row-gap: 6px; }
+    .ww-panel{ padding: 24px; }
+    .faders{ gap: 6px; padding: 14px 10px 10px; }
+  }
+
+  @media (max-width: 420px){
+    header{ padding: 16px 18px; }
+    .logo-group{ gap: 8px; }
+    .logo{ font-size: 0.72rem; }
+    .imdb-badge{ padding: 2px 5px; font-size: 0.6rem; }
+    .nav-toggle{ padding: 9px 12px; gap: 8px; }
+    .nav-toggle .nav-label{ display: none; }
+    .lang-switch{ padding: 9px 11px; font-size: 0.72rem; }
+    .fader-col span{ display: none; }
+  }
+
+  /* ---------- video modal ---------- */
+  .video-modal{
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: rgba(6,5,4,0.94);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px clamp(20px, 5vw, 64px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s;
+  }
+  .video-modal.is-open{ opacity: 1; visibility: visible; }
+  .video-modal video{
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    background: #000;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
+  .video-modal-close{
+    position: absolute;
+    top: 22px; right: clamp(20px, 5vw, 64px);
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    border-radius: 100px;
+    width: 42px; height: 42px;
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+  .video-modal-close:hover{ border-color: var(--amber); }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    .fader-track i{ animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header>
+  <div class="logo-group">
+    <div class="logo">DIEGO PÉREZ HURTADO<span>.</span></div>
+    <a class="imdb-badge" href="https://www.imdb.com/name/nm8287444/" target="_blank" rel="noopener" aria-label="Diego Pérez Hurtado IMDb Profile">IMDb</a>
+  </div>
+  <div class="header-actions">
+    <a class="lang-switch" href="../" aria-label="Cambiar a versión en español">ES</a>
+    <button class="nav-toggle" id="navOpen" aria-haspopup="true" aria-expanded="false">
+      <span class="bars"><i></i><i></i><i></i></span>
+      <span class="nav-label">Menu</span>
+    </button>
+  </div>
+</header>
+
+<nav class="overlay" id="overlay" aria-hidden="true">
+  <button class="overlay-close" id="navClose" aria-label="Close menu">✕</button>
+  <ul class="overlay-list">
+    <li><a href="#hero" data-close><span class="ch">CH.01</span> Home</a></li>
+    <li><a href="#trabajos" data-close><span class="ch">CH.02</span> Work</a></li>
+    <li><a href="#filmografia" data-close><span class="ch">CH.03</span> Filmography</a></li>
+    <li><a href="#warmwhite" data-close><span class="ch">CH.04</span> WarmWhite</a></li>
+    <li><a href="#sobre-mi" data-close><span class="ch">CH.05</span> About</a></li>
+    <li><a href="#contacto" data-close><span class="ch">CH.06</span> Contact</a></li>
+    <li><a href="../"><span class="ch">LANG</span> Versión en español ↗</a></li>
+  </ul>
+  <div class="overlay-foot">
+    <span>DIEGO PÉREZ HURTADO — GAFFER</span>
+    <span>FILM &amp; COMMERCIALS</span>
+  </div>
+</nav>
+
+<div class="video-modal" id="videoModal" aria-hidden="true">
+  <button class="video-modal-close" id="videoModalClose" aria-label="Close trailer">✕</button>
+  <video id="videoModalPlayer" controls playsinline></video>
+</div>
+
+<main>
+
+  <section class="hero" id="hero">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" src="../videos/renault.mp4"></video>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="eyebrow">GAFFER — FILM &amp; COMMERCIALS</div>
+      <h1>FIRST,<br><em>THE LIGHT</em>.</h1>
+      <p class="hero-sub">Over 13 years shaping light on set — from intimate indie crews to global brand campaigns.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#trabajos">View Work</a>
+        <a class="link-ghost" href="#warmwhite">WarmWhite — on-set DMX control ↗</a>
+        <button class="link-ghost" id="heroSound" type="button">Turn sound on ♪</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <section class="section-pad" id="sobre-mi">
+    <div class="wrap intro-grid">
+      <div class="photo-frame">
+        <div class="photo-placeholder"><span>Diego's<br>Photo</span></div>
+        <img src="../images/diego.jpg" alt="Diego Pérez Hurtado" onerror="this.remove()">
+      </div>
+      <div class="intro-text">
+        <div class="eyebrow">About</div>
+        <h2>I see the light.<br>I command the set.</h2>
+        <p>Hi, I am <strong>Diego</strong>. A Gaffer with over 13 years of experience lighting feature films and commercials — blending creative visual intuition with the rigorous technical precision demanded on set, from initial lighting concepts to the final trim before rolling.</p>
+        <p>I am also a co-founder of <strong>WarmWhite</strong>, specialized in advanced dynamic lighting control for film sets, and <strong>Aural Stage</strong>, dedicated to virtual production and LED volume lighting integration with Unreal Engine — pioneering next-generation in-camera visual lighting in Spain.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <section class="section-pad" id="trabajos">
+    <div class="wrap">
+      <div class="work-head">
+        <div>
+          <div class="eyebrow">Work — <span id="workCount">07</span> projects</div>
+          <h2>Selected<br>commercials.</h2>
+        </div>
+        <p>Commercials, film and branded content. Each project carries its own color temperature — tailored to the mood built on set.</p>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="work-grid">
+
+        <div class="card">
+          <button class="card-art" type="button" data-video="../videos/mercedes.mp4" aria-label="Play: Mercedes-Benz × Antonio Banderas" style="background:linear-gradient(135deg,#2b1608,#7a3d10 55%,#ff9a3c);">
+            <span class="tag k">3200K</span><span class="tag n">01</span>
+            <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+          <div class="card-body">
+            <h3>Mercedes-Benz × Antonio Banderas</h3>
+            <span class="meta">Commercial · Automotive</span>
+            <span class="watch">Play ▶</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <button class="card-art" type="button" data-video="../videos/revolut.mp4" aria-label="Play: Revolut 2024" style="background:linear-gradient(135deg,#071b23,#123a48 55%,#5fa8d3);">
+            <span class="tag k">5600K</span><span class="tag n">02</span>
+            <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+          <div class="card-body">
+            <h3>Revolut 2024</h3>
+            <span class="meta">Commercial · Fintech</span>
+            <span class="watch">Play ▶</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <button class="card-art" type="button" data-video="../videos/renault.mp4" aria-label="Play: Renault 5 — Segunda unidad" style="background:linear-gradient(135deg,#241608,#6b3d1c 55%,#e8a765);">
+            <span class="tag k">4300K</span><span class="tag n">03</span>
+            <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+          <div class="card-body">
+            <h3>Renault 5 — 2nd Unit</h3>
+            <span class="meta">Commercial · Automotive</span>
+            <span class="watch">Play ▶</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <button class="card-art" type="button" data-video="../videos/bellingham.mp4" aria-label="Play: Bellingham × FC25 Mobile" style="background:linear-gradient(135deg,#061620,#0d3346 55%,#7ec8e3);">
+            <span class="tag k">6500K</span><span class="tag n">04</span>
+            <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+          <div class="card-body">
+            <h3>Bellingham × FC25 Mobile</h3>
+            <span class="meta">Commercial · Sports &amp; Gaming</span>
+            <span class="watch">Play ▶</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <button class="card-art" type="button" data-video="../videos/mbappe.mp4#t=51" aria-label="Play: Mbappé — colaboración YouTube" style="background:linear-gradient(135deg,#1c1508,#5c421a 55%,#d9ab5c);">
+            <span class="tag k">4000K</span><span class="tag n">05</span>
+            <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+          <div class="card-body">
+            <h3>Mbappé — YouTube collaboration</h3>
+            <span class="meta">Branded Content</span>
+            <span class="watch">Play ▶</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <button class="card-art" type="button" data-video="../videos/adidas-antwerp.mp4" aria-label="Play: Adidas × Arte Antwerp" style="background:linear-gradient(135deg,#1a1006,#573417 55%,#c98a4b);">
+            <span class="tag k">3400K</span><span class="tag n">06</span>
+            <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+          <div class="card-body">
+            <h3>Adidas × Arte Antwerp</h3>
+            <span class="meta">Commercial · Fashion</span>
+            <span class="watch">Play ▶</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <button class="card-art" type="button" data-video="../videos/rains-autumn-2026.mp4" aria-label="Play: RAINS - Autumn 2026" style="background:linear-gradient(135deg,#0e161c,#1c2f3b 55%,#6f93a6);">
+            <span class="tag k">5600K</span><span class="tag n">07</span>
+            <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+          </button>
+          <div class="card-body">
+            <h3>RAINS - Autumn 2026</h3>
+            <span class="meta">Commercial · Fashion · Gaffer</span>
+            <span class="watch">Play ▶</span>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="work-foot"><span class="dot">●</span> This portfolio updates with every shoot — more projects coming soon. Videos stream right here, no external links needed.</p>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <section class="section-pad" id="filmografia">
+    <div class="wrap">
+      <div class="work-head">
+        <div>
+          <div class="eyebrow">Filmography — IMDb</div>
+          <h2>Film<br>&amp; TV.</h2>
+        </div>
+        <p>Selected credits as gaffer and lighting technician in cinema and television. <a class="link-ghost" href="https://www.imdb.com/name/nm8287444/" target="_blank" rel="noopener">Full profile on IMDb ↗</a></p>
+      </div>
+
+      <p class="filmo-subhead">Recent Credits — 2025–2026</p>
+      <ul class="filmo-list">
+        <li class="filmo-row">
+          <span class="filmo-year">2026</span>
+          <span class="filmo-title">Buscametales</span>
+          <span class="filmo-role">gaffer: second unit</span>
+        </li>
+        <li class="filmo-row">
+          <span class="filmo-year">2026</span>
+          <span class="filmo-title">Los secretos de la cortesana</span>
+          <span class="filmo-role">gaffer: second unit</span>
+          <a class="filmo-link" href="https://www.imdb.com/title/tt37582710/" target="_blank" rel="noopener">View on IMDb ↗</a>
+        </li>
+        <li class="filmo-row">
+          <span class="filmo-year">2026</span>
+          <span class="filmo-title">La cuidadora</span>
+          <span class="filmo-role">gaffer</span>
+          <a class="filmo-link" href="https://www.imdb.com/title/tt37075002/" target="_blank" rel="noopener">View on IMDb ↗</a>
+        </li>
+        <li class="filmo-row">
+          <span class="filmo-year">2026</span>
+          <span class="filmo-title">Berlín y la dama del armiño</span>
+          <span class="filmo-role">lighting technician</span>
+          <span class="filmo-actions">
+            <button class="filmo-trailer" type="button" data-trailer="../videos/berlin-dama-armino-trailer.mp4" aria-label="Watch trailer: Berlín y la dama del armiño">Watch trailer ▶</button>
+            <a class="filmo-link" href="https://www.imdb.com/title/tt42178219/" target="_blank" rel="noopener">IMDb ↗</a>
+          </span>
+        </li>
+        <li class="filmo-row">
+          <span class="filmo-year">2025</span>
+          <span class="filmo-title">El refugio atómico</span>
+          <span class="filmo-role">lighting technician</span>
+          <span class="filmo-actions">
+            <button class="filmo-trailer" type="button" data-trailer="../videos/el-refugio-atomico-trailer.mp4" aria-label="Watch trailer: El refugio atómico">Watch trailer ▶</button>
+            <a class="filmo-link" href="https://www.imdb.com/title/tt31173096/" target="_blank" rel="noopener">IMDb ↗</a>
+          </span>
+        </li>
+      </ul>
+
+      <p class="filmo-subhead">Highlights</p>
+      <ul class="filmo-list">
+        <li class="filmo-row">
+          <span class="filmo-year">2024</span>
+          <span class="filmo-title">Venom: The Last Dance <em>— Sony Pictures</em></span>
+          <span class="filmo-role">lighting technician</span>
+          <button class="filmo-trailer" type="button" data-trailer="../videos/venom-trailer.mp4" aria-label="Watch trailer: Venom: The Last Dance">Watch trailer ▶</button>
+        </li>
+        <li class="filmo-row">
+          <span class="filmo-year">2023</span>
+          <span class="filmo-title">Guy Ritchie's The Covenant <em>— Amazon MGM</em></span>
+          <span class="filmo-role">lighting technician</span>
+          <button class="filmo-trailer" type="button" data-trailer="../videos/el-pacto-trailer.mp4" aria-label="Watch trailer: Guy Ritchie's The Covenant">Watch trailer ▶</button>
+        </li>
+        <li class="filmo-row">
+          <span class="filmo-year">2022</span>
+          <span class="filmo-title">House of the Dragon <em>— HBO</em></span>
+          <span class="filmo-role">lighting technician</span>
+          <button class="filmo-trailer" type="button" data-trailer="../videos/casa-del-dragon-trailer.mp4" aria-label="Watch trailer: House of the Dragon">Watch trailer ▶</button>
+        </li>
+        <li class="filmo-row">
+          <span class="filmo-year">2021</span>
+          <span class="filmo-title">Sky Rojo <em>— Netflix</em></span>
+          <span class="filmo-role">lighting technician</span>
+          <button class="filmo-trailer" type="button" data-trailer="../videos/sky-rojo-trailer.mp4" aria-label="Watch trailer: Sky Rojo">Watch trailer ▶</button>
+        </li>
+        <li class="filmo-row">
+          <span class="filmo-year">2020</span>
+          <span class="filmo-title">Locked Up (Vis a vis) <em>— Netflix</em></span>
+          <span class="filmo-role">electrician: second unit</span>
+        </li>
+        <li class="filmo-row">
+          <span class="filmo-year">2019–20</span>
+          <span class="filmo-title">Money Heist (La casa de papel) <em>— Netflix</em></span>
+          <span class="filmo-role">lighting technician</span>
+        </li>
+        <li class="filmo-row">
+          <span class="filmo-year">2019</span>
+          <span class="filmo-title">Terminator: Dark Fate <em>— Paramount</em></span>
+          <span class="filmo-role">lighting technician</span>
+        </li>
+        <li class="filmo-row">
+          <span class="filmo-year">2015–16</span>
+          <span class="filmo-title">Cuéntame cómo pasó <em>— RTVE</em></span>
+          <span class="filmo-role">lighting technician</span>
+          <a class="filmo-link" href="https://www.imdb.com/title/tt0302447/" target="_blank" rel="noopener">View on IMDb ↗</a>
+        </li>
+      </ul>
+
+      <button class="filmo-toggle" id="filmoToggle" type="button" aria-expanded="false" aria-controls="filmoFull">
+        <span class="filmo-toggle-label">View complete filmography — 43 credits</span>
+        <span class="filmo-toggle-icon" aria-hidden="true">+</span>
+      </button>
+
+      <div class="filmo-full" id="filmoFull" hidden>
+        <ul class="filmo-compact">
+          <li><a href="https://www.imdb.com/title/tt21906238/" target="_blank" rel="noopener"><span class="fc-year">2024</span><span class="fc-title">Rivales</span><span class="fc-role">best boy</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt26750774/" target="_blank" rel="noopener"><span class="fc-year">2024</span><span class="fc-title">El llanto</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt27599713/" target="_blank" rel="noopener"><span class="fc-year">2024</span><span class="fc-title">La virgen roja</span><span class="fc-role">additional electrician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt29451321/" target="_blank" rel="noopener"><span class="fc-year">2024</span><span class="fc-title">Eva &amp; Nicole</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt30527421/" target="_blank" rel="noopener"><span class="fc-year">2024</span><span class="fc-title">Marbella</span><span class="fc-role">additional electrician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt27531478/" target="_blank" rel="noopener"><span class="fc-year">2024</span><span class="fc-title">Las largas sombras</span><span class="fc-role">electrician: second unit</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt16288804/" target="_blank" rel="noopener"><span class="fc-year">2023</span><span class="fc-title">Berlín y las joyas de París</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt26456880/" target="_blank" rel="noopener"><span class="fc-year">2023</span><span class="fc-title">One Trillion Dollars</span><span class="fc-role">lighting technician: second unit</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt23728826/" target="_blank" rel="noopener"><span class="fc-year">2023</span><span class="fc-title">Poquita Fe</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt9731288/" target="_blank" rel="noopener"><span class="fc-year">2023</span><span class="fc-title">Valeria</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt14077264/" target="_blank" rel="noopener"><span class="fc-year">2022</span><span class="fc-title">Fuerza de paz</span><span class="fc-role">additional electrician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt11895484/" target="_blank" rel="noopener"><span class="fc-year">2022</span><span class="fc-title">Sin límites</span><span class="fc-role">gaffer</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt10230502/" target="_blank" rel="noopener"><span class="fc-year">2022</span><span class="fc-title">La Unidad</span><span class="fc-role">additional electrician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt14716434/" target="_blank" rel="noopener"><span class="fc-year">2022</span><span class="fc-title">Sequía</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt7462410/" target="_blank" rel="noopener"><span class="fc-year">2021</span><span class="fc-title">La rueda del tiempo</span><span class="fc-role">camera assistant</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt10714778/" target="_blank" rel="noopener"><span class="fc-year">2021</span><span class="fc-title">La Fortuna</span><span class="fc-role">additional electrician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt13980362/" target="_blank" rel="noopener"><span class="fc-year">2021</span><span class="fc-title">Entrevías</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt11623464/" target="_blank" rel="noopener"><span class="fc-year">2021</span><span class="fc-title">Paraíso</span><span class="fc-role">additional electrician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt9204170/" target="_blank" rel="noopener"><span class="fc-year">2020–21</span><span class="fc-title">Madres. Amor y vida</span><span class="fc-role">additional electrician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt10721998/" target="_blank" rel="noopener"><span class="fc-year">2020</span><span class="fc-title">Inés del alma mía</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt9272462/" target="_blank" rel="noopener"><span class="fc-year">2019–20</span><span class="fc-title">Justo antes de Cristo</span><span class="fc-role">grip / lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt7543538/" target="_blank" rel="noopener"><span class="fc-year">2019</span><span class="fc-title">Los Rodríguez y el más allá</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt7858496/" target="_blank" rel="noopener"><span class="fc-year">2019</span><span class="fc-title">Los Japón</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt10157656/" target="_blank" rel="noopener"><span class="fc-year">2019</span><span class="fc-title">Madres</span><span class="fc-role">lighting technician · short film</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt8297022/" target="_blank" rel="noopener"><span class="fc-year">2019</span><span class="fc-title">El embarcadero</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt7158972/" target="_blank" rel="noopener"><span class="fc-year">2018</span><span class="fc-title">Fugitiva</span><span class="fc-role">grip</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt6708044/" target="_blank" rel="noopener"><span class="fc-year">2018</span><span class="fc-title">La tribu</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt7538258/" target="_blank" rel="noopener"><span class="fc-year">2017</span><span class="fc-title">Club Houdini</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt5991410/" target="_blank" rel="noopener"><span class="fc-year">2017</span><span class="fc-title">Señor, dame paciencia</span><span class="fc-role">additional electrician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt4557512/" target="_blank" rel="noopener"><span class="fc-year">2016</span><span class="fc-title">Jota de Saura</span><span class="fc-role">lighting technician</span></a></li>
+          <li><a href="https://www.imdb.com/title/tt4922692/" target="_blank" rel="noopener"><span class="fc-year">2016</span><span class="fc-title">Kiki, el amor se hace</span><span class="fc-role">lighting technician</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <section class="section-pad" id="warmwhite">
+    <div class="wrap">
+      <div class="ww-panel">
+        <div>
+          <div class="ww-brand">
+            <svg class="ww-logo" viewBox="0 0 1920 1080" aria-hidden="true">
+              <path d="M203,13.35h454.8c0,0-68.43,27.31-45.81,91.48c22.62,64.17,199.05,453.65,199.05,453.65
+                s88.32,162.75,34.24,263.98c-60.47,113.17-127.93,237.99-127.93,237.99S292.95,141.7,277.63,116.98S203,13.35,203,13.35z"/>
+              <path d="M756.29,13.35h454.8c0,0-68.43,27.31-45.81,91.48c22.62,64.17,199.05,453.65,199.05,453.65
+                s88.32,162.75,34.24,263.98c-60.47,113.17-127.93,237.99-127.93,237.99S846.24,141.7,830.91,116.98
+                C815.59,92.27,756.29,13.35,756.29,13.35z"/>
+              <path d="M1362.7,233.02c0,0,94.74,6.51,163.39-75.94c39.71-40.14,53.33-100.89,52.76-143.74
+                c0,0-9.08,95.22,85.1,175.89c55.03,43.9,131.05,43.9,131.05,43.9s-81.13-8.8-164.52,78.53c-39.14,49.9-50.49,94.92-51.63,133.97
+                c0,0,5.11-113.36-106.66-180.62C1407.33,228.69,1362.7,233.02,1362.7,233.02z"/>
+            </svg>
+            <div class="eyebrow is-white">Proprietary Project</div>
+          </div>
+          <h2>Warm<span>White</span>.</h2>
+          <p>Alongside my work as a gaffer, I am a co-founder of <strong>WarmWhite</strong>, a specialized venture dedicated to on-set luminaire control via <strong>DMX</strong>.</p>
+          <p>The goal: patching, programming, and operating all on-set lighting from a single, unified system — engineered to streamline the electrical crew's workflow while ensuring precise, granular control for every scene.</p>
+          <div class="ww-cta">
+            <a class="link-ghost" href="https://www.warmwhite.info" target="_blank" rel="noopener">warmwhite.info ↗</a>
+            <span class="ww-note">Website under construction</span>
+          </div>
+        </div>
+        <div class="faders" aria-hidden="true">
+          <div class="fader-col"><div class="fader-track"><i></i></div><span>CH01</span></div>
+          <div class="fader-col"><div class="fader-track"><i></i></div><span>CH02</span></div>
+          <div class="fader-col"><div class="fader-track"><i></i></div><span>CH03</span></div>
+          <div class="fader-col"><div class="fader-track"><i></i></div><span>CH04</span></div>
+          <div class="fader-col"><div class="fader-track"><i></i></div><span>CH05</span></div>
+          <div class="fader-col"><div class="fader-track"><i></i></div><span>CH06</span></div>
+          <div class="fader-col"><div class="fader-track"><i></i></div><span>CH07</span></div>
+          <div class="fader-col"><div class="fader-track"><i></i></div><span>CH08</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <section class="section-pad">
+    <div class="wrap stats">
+      <div class="stat"><b>+13</b><span>Years on set</span></div>
+      <div class="stat"><b id="statWorkCount">07</b><span>Productions in portfolio</span></div>
+      <div class="stat"><b>02</b><span>Proprietary ventures — WarmWhite &amp; Aural Stage</span></div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="divider"></div></div>
+
+  <section class="section-pad contact" id="contacto">
+    <div class="wrap">
+      <div class="eyebrow">Contact</div>
+      <h2>Let's shoot.</h2>
+      <div class="contact-row">
+        <p>Available for commercial and feature film shoots worldwide. Drop me a line to discuss schedule, crew, and lighting.</p>
+        <a class="mail" href="mailto:diegoperezhurtado@gmail.com">diegoperezhurtado@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>DIEGO PÉREZ HURTADO — GAFFER</span>
+  <span>© 2026</span>
+</footer>
+
+<script>
+  (function(){
+    var openBtn = document.getElementById('navOpen');
+    var closeBtn = document.getElementById('navClose');
+    var overlay = document.getElementById('overlay');
+
+    function openNav(){
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      openBtn.setAttribute('aria-expanded', 'true');
+    }
+    function closeNav(){
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      openBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    openBtn.addEventListener('click', openNav);
+    closeBtn.addEventListener('click', closeNav);
+    overlay.querySelectorAll('[data-close]').forEach(function(a){
+      a.addEventListener('click', closeNav);
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeNav();
+    });
+
+    document.querySelectorAll('.card-art[data-video]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var video = document.createElement('video');
+        video.src = btn.getAttribute('data-video');
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.preload = 'auto';
+        video.setAttribute('aria-label', btn.getAttribute('aria-label') || 'Video');
+        btn.textContent = '';
+        btn.appendChild(video);
+        btn.disabled = true;
+        btn.removeAttribute('style');
+      });
+    });
+
+    var workCardCount = document.querySelectorAll('.work-grid .card').length;
+    var workCountEl = document.getElementById('workCount');
+    var statWorkCountEl = document.getElementById('statWorkCount');
+    var workCountStr = String(workCardCount).padStart(2, '0');
+    if(workCountEl) workCountEl.textContent = workCountStr;
+    if(statWorkCountEl) statWorkCountEl.textContent = workCountStr;
+
+    var filmoToggle = document.getElementById('filmoToggle');
+    var filmoFull = document.getElementById('filmoFull');
+    if(filmoToggle && filmoFull){
+      filmoToggle.addEventListener('click', function(){
+        var open = filmoToggle.getAttribute('aria-expanded') === 'true';
+        filmoToggle.setAttribute('aria-expanded', String(!open));
+        filmoFull.hidden = open;
+        filmoToggle.querySelector('.filmo-toggle-label').textContent = open
+          ? 'View complete filmography — 43 credits'
+          : 'Hide complete filmography';
+      });
+    }
+
+    var videoModal = document.getElementById('videoModal');
+    var videoModalPlayer = document.getElementById('videoModalPlayer');
+    var videoModalClose = document.getElementById('videoModalClose');
+    function openTrailer(src){
+      videoModalPlayer.src = src;
+      videoModal.classList.add('is-open');
+      videoModal.setAttribute('aria-hidden', 'false');
+      videoModalPlayer.play();
+    }
+    function closeTrailer(){
+      videoModal.classList.remove('is-open');
+      videoModal.setAttribute('aria-hidden', 'true');
+      videoModalPlayer.pause();
+      videoModalPlayer.removeAttribute('src');
+      videoModalPlayer.load();
+    }
+    document.querySelectorAll('[data-trailer]').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        openTrailer(btn.getAttribute('data-trailer'));
+      });
+    });
+    if(videoModalClose) videoModalClose.addEventListener('click', closeTrailer);
+    if(videoModal){
+      videoModal.addEventListener('click', function(e){
+        if(e.target === videoModal) closeTrailer();
+      });
+    }
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeTrailer();
+    });
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var heroVideo = document.getElementById('heroVideo');
+    var heroSound = document.getElementById('heroSound');
+    if(heroVideo){
+      if(reduceMotion) heroVideo.pause();
+      if(heroSound){
+        heroSound.addEventListener('click', function(){
+          heroVideo.muted = !heroVideo.muted;
+          heroSound.textContent = heroVideo.muted ? 'Turn sound on ♪' : 'Mute';
+        });
+      }
+    }
+  })();
+</script>
+
+</body>
+</html>

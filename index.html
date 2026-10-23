@@ -183,6 +183,32 @@
     display: block;
   }
 
+  .header-actions{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lang-switch{
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .lang-switch:hover{
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+
   /* ---------- nav overlay ---------- */
   .overlay{
     position: fixed;
@@ -847,6 +873,7 @@
     .imdb-badge{ padding: 2px 5px; font-size: 0.6rem; }
     .nav-toggle{ padding: 9px 12px; gap: 8px; }
     .nav-toggle .nav-label{ display: none; }
+    .lang-switch{ padding: 9px 11px; font-size: 0.72rem; }
     .fader-col span{ display: none; }
   }
 
@@ -900,10 +927,13 @@
     <div class="logo">DIEGO PÉREZ HURTADO<span>.</span></div>
     <a class="imdb-badge" href="https://www.imdb.com/name/nm8287444/" target="_blank" rel="noopener" aria-label="Perfil de Diego Pérez Hurtado en IMDb">IMDb</a>
   </div>
-  <button class="nav-toggle" id="navOpen" aria-haspopup="true" aria-expanded="false">
-    <span class="bars"><i></i><i></i><i></i></span>
-    <span class="nav-label">Menú</span>
-  </button>
+  <div class="header-actions">
+    <a class="lang-switch" href="en/" aria-label="Switch to English version">EN</a>
+    <button class="nav-toggle" id="navOpen" aria-haspopup="true" aria-expanded="false">
+      <span class="bars"><i></i><i></i><i></i></span>
+      <span class="nav-label">Menú</span>
+    </button>
+  </div>
 </header>
 
 <nav class="overlay" id="overlay" aria-hidden="true">
@@ -915,6 +945,7 @@
     <li><a href="#warmwhite" data-close><span class="ch">CH.04</span> WarmWhite</a></li>
     <li><a href="#sobre-mi" data-close><span class="ch">CH.05</span> Sobre mí</a></li>
     <li><a href="#contacto" data-close><span class="ch">CH.06</span> Contacto</a></li>
+    <li><a href="en/"><span class="ch">LANG</span> English version ↗</a></li>
   </ul>
   <div class="overlay-foot">
     <span>DIEGO PÉREZ HURTADO — GAFFER</span>
