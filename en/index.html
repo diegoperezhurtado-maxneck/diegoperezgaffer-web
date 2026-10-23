@@ -451,6 +451,25 @@
     padding: 0;
     font: inherit;
     cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--surface);
+    overflow: hidden;
+  }
+  .card-art::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(11,10,8,0.25) 0%, rgba(11,10,8,0.1) 45%, rgba(11,10,8,0.55) 100%);
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .card:hover .card-art::before{
+    opacity: 0.65;
+  }
+  .card-art:disabled::before{
+    display: none;
   }
   .card-art:disabled{ cursor: pointer; }
   .card-art video{
@@ -460,6 +479,10 @@
     height: 100%;
     object-fit: cover;
     background: #000;
+    z-index: 2;
+  }
+  .card-art .tag, .card-art .play{
+    z-index: 1;
   }
   .card-art .tag{
     position: absolute;
@@ -1009,7 +1032,7 @@
       <div class="work-grid">
 
         <div class="card">
-          <button class="card-art" type="button" data-video="../videos/mercedes.mp4" aria-label="Play: Mercedes-Benz × Antonio Banderas" style="background:linear-gradient(135deg,#2b1608,#7a3d10 55%,#ff9a3c);">
+          <button class="card-art" type="button" data-video="../videos/mercedes.mp4" aria-label="Play: Mercedes-Benz × Antonio Banderas" style="background-image:url('../images/covers/mercedes.jpg');">
             <span class="tag k">3200K</span><span class="tag n">01</span>
             <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
           </button>
@@ -1021,7 +1044,7 @@
         </div>
 
         <div class="card">
-          <button class="card-art" type="button" data-video="../videos/revolut.mp4" aria-label="Play: Revolut 2024" style="background:linear-gradient(135deg,#071b23,#123a48 55%,#5fa8d3);">
+          <button class="card-art" type="button" data-video="../videos/revolut.mp4" aria-label="Play: Revolut 2024" style="background-image:url('../images/covers/revolut.jpg');">
             <span class="tag k">5600K</span><span class="tag n">02</span>
             <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
           </button>
@@ -1033,7 +1056,7 @@
         </div>
 
         <div class="card">
-          <button class="card-art" type="button" data-video="../videos/renault.mp4" aria-label="Play: Renault 5 — Segunda unidad" style="background:linear-gradient(135deg,#241608,#6b3d1c 55%,#e8a765);">
+          <button class="card-art" type="button" data-video="../videos/renault.mp4" aria-label="Play: Renault 5 — Segunda unidad" style="background-image:url('../images/covers/renault.jpg');">
             <span class="tag k">4300K</span><span class="tag n">03</span>
             <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
           </button>
@@ -1045,7 +1068,7 @@
         </div>
 
         <div class="card">
-          <button class="card-art" type="button" data-video="../videos/bellingham.mp4" aria-label="Play: Bellingham × FC25 Mobile" style="background:linear-gradient(135deg,#061620,#0d3346 55%,#7ec8e3);">
+          <button class="card-art" type="button" data-video="../videos/bellingham.mp4" aria-label="Play: Bellingham × FC25 Mobile" style="background-image:url('../images/covers/bellingham.jpg');">
             <span class="tag k">6500K</span><span class="tag n">04</span>
             <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
           </button>
@@ -1057,7 +1080,7 @@
         </div>
 
         <div class="card">
-          <button class="card-art" type="button" data-video="../videos/mbappe.mp4#t=51" aria-label="Play: Mbappé — colaboración YouTube" style="background:linear-gradient(135deg,#1c1508,#5c421a 55%,#d9ab5c);">
+          <button class="card-art" type="button" data-video="../videos/mbappe.mp4#t=51" aria-label="Play: Mbappé — colaboración YouTube" style="background-image:url('../images/covers/mbappe.jpg');">
             <span class="tag k">4000K</span><span class="tag n">05</span>
             <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
           </button>
@@ -1069,7 +1092,7 @@
         </div>
 
         <div class="card">
-          <button class="card-art" type="button" data-video="../videos/adidas-antwerp.mp4" aria-label="Play: Adidas × Arte Antwerp" style="background:linear-gradient(135deg,#1a1006,#573417 55%,#c98a4b);">
+          <button class="card-art" type="button" data-video="../videos/adidas-antwerp.mp4" aria-label="Play: Adidas × Arte Antwerp" style="background-image:url('../images/covers/adidas-antwerp.jpg');">
             <span class="tag k">3400K</span><span class="tag n">06</span>
             <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
           </button>
@@ -1081,7 +1104,7 @@
         </div>
 
         <div class="card">
-          <button class="card-art" type="button" data-video="../videos/rains-autumn-2026.mp4" aria-label="Play: RAINS - Autumn 2026" style="background:linear-gradient(135deg,#0e161c,#1c2f3b 55%,#6f93a6);">
+          <button class="card-art" type="button" data-video="../videos/rains-autumn-2026.mp4" aria-label="Play: RAINS - Autumn 2026" style="background-image:url('../images/covers/rains-autumn-2026.jpg');">
             <span class="tag k">5600K</span><span class="tag n">07</span>
             <span class="play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
           </button>
